@@ -18,13 +18,7 @@ public class Gmail extends Email {
     }
 
     public void receiveMail(Date date, String sender, String message){
-//        if(inbox.size() == inboxCapacity){
-//            Triple<Date, String, String> oldestMail = Inbox.get(0);
-//            Inbox.remove(0);
-//            Trash.add(oldestMail);
-//        }
-//        Triple<Date, String, String> mail = Triple.of(date, sender, message);
-//        Inbox.add(mail);
+
         if(inbox.size() == inboxCapacity){
             trash.add(inbox.remove(0));
         }

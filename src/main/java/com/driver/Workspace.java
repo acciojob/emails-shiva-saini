@@ -31,6 +31,7 @@ public class Workspace extends Gmail{
             currCalendar.add(Pair.of(m.getStartTime(),m.getEndTime()));
         }
         Collections.sort(currCalendar);
+        if(calendar.size() == 0) return 0;
         int cnt = 1;
         Pair<LocalTime,LocalTime> p = currCalendar.get(0);
         for(int i=1;i<currCalendar.size();i++){
