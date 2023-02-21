@@ -26,17 +26,17 @@ public class Workspace extends Gmail{
     }
 
     public int findMaxMeetings(){
-        ArrayList<Pair<LocalTime,LocalTime>> currcalendar = new ArrayList<>();
+        ArrayList<Pair<LocalTime,LocalTime>> currCalendar = new ArrayList<>();
         for(Meeting m :calendar){
-            currcalendar.add(Pair.of(m.getStartTime(),m.getEndTime()));
+            currCalendar.add(Pair.of(m.getStartTime(),m.getEndTime()));
         }
-        Collections.sort(currcalendar);
+        Collections.sort(currCalendar);
         int cnt = 1;
-        Pair<LocalTime,LocalTime> p = currcalendar.get(0);
-        for(int i=1;i<currcalendar.size();i++){
-            if(currcalendar.get(i).getLeft().compareTo(p.getRight()) > 0){
+        Pair<LocalTime,LocalTime> p = currCalendar.get(0);
+        for(int i=1;i<currCalendar.size();i++){
+            if(currCalendar.get(i).getLeft().compareTo(p.getRight()) > 0){
                 cnt++;
-                p = currcalendar.get(i);
+                p = currCalendar.get(i);
             }
         }
         return cnt;

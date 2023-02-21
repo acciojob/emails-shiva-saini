@@ -44,6 +44,7 @@ public class Email {
     public void changePassword(String oldPassword, String newPassword){
         if(oldPassword.equals(password)){
             if(isValid(newPassword)){
+                System.out.println("Password changed successfully!");
                 this.password = newPassword;
             }else{
                 System.out.println("The new password is not valid!");

@@ -18,8 +18,15 @@ public class Gmail extends Email {
     }
 
     public void receiveMail(Date date, String sender, String message){
+//        if(inbox.size() == inboxCapacity){
+//            Triple<Date, String, String> oldestMail = Inbox.get(0);
+//            Inbox.remove(0);
+//            Trash.add(oldestMail);
+//        }
+//        Triple<Date, String, String> mail = Triple.of(date, sender, message);
+//        Inbox.add(mail);
         if(inbox.size() == inboxCapacity){
-            trash.add(inbox.remove(inboxCapacity-1));
+            trash.add(inbox.remove(0));
         }
         inbox.add(new Mail(date,sender,message));
         // If the inbox is full, move the oldest mail in the inbox to trash and add the new mail to inbox.
@@ -30,14 +37,20 @@ public class Gmail extends Email {
     }
 
     public void deleteMail(String message){
-        int cnt = 0;
-        for(Mail mail:inbox){
-            if(mail.getMessage().equals(message)){
-                trash.add(inbox.remove(cnt));
+        int index = -1;
+        for(int i=0;i<inbox.size();i++){
+            if(message.equals(inbox.get(i).getMessage())){
+                index = i;
                 break;
+
             }
-            cnt++;
         }
+
+        if(index != -1){
+            trash.add(inbox.get(index));
+            inbox.remove(index);
+        }
+
         // Each message is distinct
         // If the given message is found in any mail in the inbox, move the mail to trash, else do nothing
 
